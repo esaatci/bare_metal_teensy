@@ -12,44 +12,7 @@
 // Pin 6  has the LED on Teensy++ 2.0
 // Pin 13 has the LED on Teensy 3.0
 // give it a name:
-/*
-int led = 13;
 
-void turn_off(void) {
-  volatile uint32_t  *address = (volatile uint32_t *)0x400ff088;
-  uint32_t write_val = 0x00000020;
-  *address = write_val;
-}
-
-void turn_on(void) {
-  volatile uint32_t *address = (volatile uint32_t *)0x400ff084;
-  uint32_t write_val = 0x00000020;
-  *address = write_val;
-}
-
-void read_reg() {
- volatile uint32_t *address = (volatile uint32_t *)0x400ff080;
- Serial.print("this is the value ");
- Serial.println(*address, HEX);
-}
-
-void init_pin() {
-  unsigned int *p = (unsigned int *)0x4004B014;
-  unsigned int x = *p | (0x1 << 8);
-  *p = x;
-  x = *p & (1 << 8);
-  Serial.print("the value for the pin is");
-  Serial.println(x, HEX);
-  
-  
-  unsigned int *address = (unsigned int *)0x40048038;
-  unsigned int masked = !!(*address & (1 << 11));
-  Serial.print("The port C is atm ");
-  Serial.println(masked);
-  
-  
-}
-*/
 
 
 // Enables port C
@@ -95,7 +58,7 @@ void set_output(void)
   uint32_t *gpioc_pdor = (uint32_t *)0x400FF080;
   *gpioc_pddr |= (1 << 5);
   *gpioc_pdor &= (1 << 5);
-  
+//  *gpioc_pdor = 0x20;
 
 }
 
@@ -119,7 +82,7 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   //delay(1000);
-  toggle_pin();
-  delay(1000);
+//  toggle_pin();
+//  delay(1000);
   
 }
